@@ -1,14 +1,43 @@
 ﻿<Page
-    x:Class="RouteMap.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RouteMap"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="RouteMap.MainPage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Origen:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="0" x:Name="origen" Margin="10" Width="auto"/>
+            <TextBlock Text="Destino:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="1" x:Name="destino" Margin="10" Width="auto"/>
+            <Button Grid.Column="4" Grid.Row="1" Content="Pintar en el mapa" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="getJson"/>
+            <TextBlock x:Name="textError" Text="Error" Grid.Column="0" Grid.ColumnSpan="5" TextAlignment="Center" Grid.Row="2" FontSize="20"/>
+
+        </Grid>
+
+        <Custom:MapControl x:Name="Mapa" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" Height="800" VerticalAlignment="Stretch" MapServiceToken="An6jjlTc8XcKjbHJlVFiKlA6hAjJ9fjpehAR73y9pVtW9ldcu06EyU70hqcBa_rZ" MapTapped="Mapa_MapTapped"/>
 
     </Grid>
 </Page>
